@@ -7,6 +7,7 @@ const api = axios.create({
   },
 });
 
+// This function fetches the root regions for a given hierarchy. It takes a hierarchyId as a parameter and returns an array of root regions or an empty array if an error occurs.
 export const fetchRootRegions = async (hierarchyId) => {
   try {
     const response = await api.get('/api/regions/root', { params: { hierarchyId } });
@@ -17,6 +18,7 @@ export const fetchRootRegions = async (hierarchyId) => {
   }
 };
 
+// This function fetches the subregions for a given region and hierarchy. It takes a regionId and a hierarchyId as parameters and returns an array of subregions or an empty array if an error occurs.
 export const fetchSubregions = async (regionId, hierarchyId) => {
   try {
     const response = await api.get(`/api/regions/${regionId}/subregions`, { params: { hierarchyId } });
@@ -30,6 +32,7 @@ export const fetchSubregions = async (regionId, hierarchyId) => {
   }
 };
 
+// This function fetches a region for a given hierarchy. It takes a regionId and a hierarchyId as parameters and returns the region data or an empty array if an error occurs.
 export const fetchRegion = async (regionId, hierarchyId) => {
   try {
     const response = await api.get(`/api/regions/${regionId}`, { params: { hierarchyId } });
@@ -40,6 +43,7 @@ export const fetchRegion = async (regionId, hierarchyId) => {
   }
 };
 
+// This function fetches the geometry for a given region and hierarchy. It takes a regionId, a hierarchyId, and a force flag as parameters. The force flag determines whether to resolve empty geometries. The function returns the region geometry data or null if no geometry is found or an error occurs.
 // Fetch the geometry for a region. Returns null if no geometry is found.
 export const fetchRegionGeometry = async (regionId, hierarchyId, force) => {
   try {
@@ -54,6 +58,7 @@ export const fetchRegionGeometry = async (regionId, hierarchyId, force) => {
   }
 };
 
+// This function fetches the ancestors for a given region and hierarchy. It takes a regionId and a hierarchyId as parameters and returns an array of ancestors or an empty array if an error occurs.
 export const fetchAncestors = async (regionId, hierarchyId) => {
   try {
     const response = await api.get(`/api/regions/${regionId}/ancestors`, { params: { hierarchyId } });
@@ -67,6 +72,7 @@ export const fetchAncestors = async (regionId, hierarchyId) => {
   }
 };
 
+// This function fetches all hierarchies. It takes no parameters and returns an array of hierarchies or an empty array if an error occurs.
 export const fetchHierarchies = async () => {
   try {
     const response = await api.get('/api/regions/hierarchies');
